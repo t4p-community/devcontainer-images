@@ -9,13 +9,15 @@ RUN apt-get install -y \
   build-essential
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 RUN /root/.cargo/bin/rustup install nightly
 RUN /root/.cargo/bin/rustup component add rustfmt
 RUN /root/.cargo/bin/rustup component add rustfmt --toolchain nightly
 RUN /root/.cargo/bin/rustup component add clippy 
 RUN /root/.cargo/bin/rustup component add clippy --toolchain nightly
-
+RUN /root/.cargo/bin/rustup target add wasm32-unknown-unknown
 RUN /root/.cargo/bin/rustup default nightly
+
 RUN /root/.cargo/bin/cargo install trunk
 
 ENV PATH="/root/.cargo/bin:$PATH"
