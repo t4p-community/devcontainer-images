@@ -16,8 +16,10 @@ RUN /root/.cargo/bin/rustup component add rustfmt --toolchain nightly
 RUN /root/.cargo/bin/rustup component add clippy 
 RUN /root/.cargo/bin/rustup component add clippy --toolchain nightly
 RUN /root/.cargo/bin/rustup target add wasm32-unknown-unknown
-RUN /root/.cargo/bin/rustup default nightly
 
+RUN /root/.cargo/bin/cargo install cargo-leptos
 RUN /root/.cargo/bin/cargo install trunk
+
+RUN /root/.cargo/bin/rustup default nightly
 
 ENV PATH="/root/.cargo/bin:$PATH"
