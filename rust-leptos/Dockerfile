@@ -23,6 +23,7 @@ RUN /root/.cargo/bin/rustup default nightly
 RUN /root/.cargo/bin/cargo install cargo-leptos
 RUN /root/.cargo/bin/cargo install trunk
 RUN /root/.cargo/bin/cargo install sqlx-cli
+RUN /root/.cargo/bin/cargo install leptosfmt
 RUN /root/.cargo/bin/rustup target add wasm32-unknown-unknown
 
 
