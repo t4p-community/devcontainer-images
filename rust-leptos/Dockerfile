@@ -9,6 +9,7 @@ RUN apt-get install -y \
   nodejs \
   curl \
   git \
+  sqlite3 \
   gh
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
