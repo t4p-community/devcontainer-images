@@ -10,7 +10,8 @@ RUN apt-get install -y \
   curl \
   git \
   sqlite3 \
-  gh
+  gh \
+  valgrind
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
@@ -27,6 +28,5 @@ RUN /root/.cargo/bin/cargo install sqlx-cli
 RUN /root/.cargo/bin/cargo install leptosfmt
 RUN /root/.cargo/bin/cargo install cargo-expand
 RUN /root/.cargo/bin/rustup target add wasm32-unknown-unknown
-
 
 ENV PATH="/root/.cargo/bin:$PATH"

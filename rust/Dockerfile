@@ -10,7 +10,8 @@ RUN apt-get install -y \
   curl \
   git \
   sqlite3 \
-  gh
+  gh \
+  valgrind
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
@@ -21,6 +22,5 @@ RUN /root/.cargo/bin/rustup component add clippy
 RUN /root/.cargo/bin/rustup component add clippy --toolchain nightly
 
 RUN /root/.cargo/bin/rustup default nightly
-
 
 ENV PATH="/root/.cargo/bin:$PATH"
