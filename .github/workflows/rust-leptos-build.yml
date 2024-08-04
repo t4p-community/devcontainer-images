@@ -1,4 +1,4 @@
-name: rust-build
+name: rust-leptos-build
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     branches:
       - "main"
     paths:
-      - rust/**
+      - rust-leptos/**
 
 jobs:
   docker:
@@ -33,8 +33,8 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          context: rust
-          tags: t4pcommunity/rust-devcontainer:latest
+          context: rust-leptos
+          tags: t4pcommunity/rust-leptos-devcontainer:latest
           outputs: ${{ github.event_name == 'pull_request' && 'type=cacheonly' || 'type=registry,push=true' }}
 
   
