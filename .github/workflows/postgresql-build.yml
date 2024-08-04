@@ -6,8 +6,6 @@ on:
       - "main"
     paths:
       - postgresql/**
-    tags:
-      - "v*.*.*"
 
 jobs:
   docker:
