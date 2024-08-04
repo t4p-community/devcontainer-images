@@ -35,32 +35,20 @@ RUN ./configure --prefix=$PG_PREFIX --with-perl --with-python --with-tcl --with-
 RUN make
 RUN make install
 
-ENV PG_BIN=$PG_PREFIX/bin
 ENV PG_DATA=$PG_PREFIX/data
-ENV POSTGRESQL_CONF_PATH=$PG_DATA/postgresql.conf
-ENV PGHBA_CONF_PATH=$PG_DATA/pg_hba.conf
-ENV SC_PATH=$PG_DATA/server.crt
-ENV SK_PATH=$PG_DATA/server.key
 EXPOSE 5432
+
+WORKDIR /build
+
+COPY startup.sh .
+COPY sql sql
 
 RUN mkdir $PG_DATA
 
 RUN useradd postgres
+
 RUN chown postgres:postgres $PG_DATA
+RUN chmod u+x startup.sh
 USER postgres:postgres
 
-RUN $PG_BIN/initdb -D $PG_DATA
-
-RUN openssl req -new -x509 -days 36500 -nodes -out $SC_PATH -keyout $SK_PATH \
-    -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=locahost"
-RUN chmod 644 $SC_PATH
-RUN chmod 600 $SK_PATH
-RUN chown postgres:postgres $SC_PATH
-RUN chown postgres:postgres $SK_PATH
-
-RUN sed -i "s/^#listen_addresses = 'localhost'/listen_addresses = '\*'/" $POSTGRESQL_CONF_PATH
-RUN sed -i "s/^#port = 5432/port = 5432/" $POSTGRESQL_CONF_PATH
-RUN sed -i "s/^#ssl = off/ssl = on/" $POSTGRESQL_CONF_PATH
-RUN sed -i '/# IPv6 local connections:/i hostssl all postgres 0.0.0.0/0 trust' $PGHBA_CONF_PATH
-
-ENTRYPOINT ["/usr/local/pgsql/bin/postgres", "-D", "/usr/local/pgsql/data"]
+ENTRYPOINT ["./startup.sh"]

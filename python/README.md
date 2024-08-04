@@ -1,8 +1,8 @@
-# Training 4 Programmers PostgreSQL DevContainer Image
+# Training 4 Programmers Python DevContainer Image
 
 ## Training Events
 
-This image is among the images used for Training 4 Programmers training events. The image has been customized for training classes and is commonly used in Docker Desktop and GitHub Codespace environments. This is not the official PostgreSQL image and is not recommended for production environments.
+This image is among the images used for Training 4 Programmers training events. The image has been customized for training classes and is commonly used in Docker Desktop and GitHub Codespace environments. This is not the official Python image and is not recommended for production environments.
 
 ## Free to Use to Everyone
 
