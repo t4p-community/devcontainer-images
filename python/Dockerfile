@@ -15,6 +15,7 @@ RUN apt-get install -y \
   python3 \
   python3-venv \
   python3-pip \
+  python3-full \
   python-is-python3
 
 RUN /usr/bin/python3 -m pip install --upgrade pip mypy ruff
