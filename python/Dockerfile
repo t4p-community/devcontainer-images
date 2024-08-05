@@ -16,6 +16,10 @@ RUN apt-get install -y \
   python3-venv \
   python3-pip \
   python3-full \
-  python-is-python3
+  python-is-python3 \
+  pipx
 
-RUN /usr/bin/python3 -m pip install --upgrade pip mypy ruff
+RUN pipx ensurepath
+RUN pipx ensurepath --global  
+
+RUN pipx install --upgrade pip mypy ruff

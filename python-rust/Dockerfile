@@ -13,9 +13,13 @@ RUN apt-get install -y \
   python3-pip \
   python3-full \
   python-is-python3 \
-  valgrind
+  valgrind \
+  pipx
 
-RUN /usr/bin/python3 -m pip install --upgrade pip mypy ruff maturin
+RUN pipx ensurepath
+RUN pipx ensurepath --global 
+
+RUN pipx install --upgrade pip mypy ruff maturin
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN /root/.cargo/bin/rustup install nightly
