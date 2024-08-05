@@ -17,7 +17,6 @@ RUN apt-get install -y \
   pipx
 
 RUN pipx ensurepath
-RUN pipx ensurepath --global 
 
 RUN pipx install --upgrade pip mypy ruff maturin
 
