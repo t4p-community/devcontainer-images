@@ -18,7 +18,7 @@ RUN apt-get install -y \
 
 RUN pipx ensurepath
 
-RUN pipx install --upgrade pip mypy ruff maturin
+RUN pipx upgrade pip mypy ruff maturin
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 RUN /root/.cargo/bin/rustup install nightly

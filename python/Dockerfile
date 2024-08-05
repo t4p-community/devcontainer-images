@@ -21,4 +21,4 @@ RUN apt-get install -y \
 
 RUN pipx ensurepath
 
-RUN pipx install --upgrade pip mypy ruff
+RUN pipx upgrade pip mypy ruff
