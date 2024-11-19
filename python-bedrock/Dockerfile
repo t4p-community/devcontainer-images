@@ -71,6 +71,10 @@ RUN cmake --install build
 WORKDIR /g/faiss-1.7.4/build/faiss/python
 RUN /venv/bin/pip install .
 
+WORKDIR /g
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN ./aws/install
 
 
 
