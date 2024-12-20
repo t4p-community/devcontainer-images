@@ -12,4 +12,4 @@ RUN apt-get install -y \
   sqlite3 \
   gh
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
